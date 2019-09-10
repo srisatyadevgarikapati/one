@@ -11,4 +11,4 @@ EXPOSE 7777
 RUN go get
 RUN go build
 
-ENTRYPOINT ["go","run","main.go"]
+CMD ["./one"]
