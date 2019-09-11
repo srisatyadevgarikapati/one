@@ -50,7 +50,7 @@ type message struct{
 }
 
 func homePage(writer http.ResponseWriter, request *http.Request) {
-	response := message{Message:"From One"}
+	response := message{Message:"From POD One"}
 	data,err := json.Marshal(response)
 
 	if err !=nil{
