@@ -49,14 +49,39 @@ type message struct{
 	Message string
 }
 
+func isError(err error) bool {
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	return (err != nil)
+}
+var path = "OneTest.txt"
+func createFile() {
+	// check if file exists
+	var _, err = os.Stat(path)
+
+	// create file if not exists
+	if os.IsNotExist(err) {
+		var file, err = os.Create(path)
+		if isError(err) {
+			return
+		}
+		defer file.Close()
+	}
+
+	fmt.Println("File Created Successfully", path)
+}
+
+
 func homePage(writer http.ResponseWriter, request *http.Request) {
-	response := message{Message:"From POD One"}
+	response := message{Message:"From One"}
 	data,err := json.Marshal(response)
 
 	if err !=nil{
 		panic("Erorr at One JSON MARSHALL")
 	}
-
+	createFile()
 	fmt.Fprint(writer,string(data))
 
 }
