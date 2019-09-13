@@ -56,7 +56,7 @@ func isError(err error) bool {
 
 	return (err != nil)
 }
-var path = "/oneData/OneTest.txt"
+var path = "oneData/OneTest.txt"
 func createFile() {
 	// check if file exists
 	var _, err = os.Stat(path)
